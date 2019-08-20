@@ -12,4 +12,7 @@ function do_revert(){
   git checkout HEAD main.go
 }
 
-do_test && do_commit || do_revert
+while ((1)); do
+  inotifywait -r -e modify . >&2
+  do_test && do_commit || do_revert
+done
