@@ -5,6 +5,10 @@ import (
 	"fmt"
 )
 
+func Cmd(cmdline string) bool {
+    return true
+}
+
 func main(){
 	fmt.Println("hello world")
 }
