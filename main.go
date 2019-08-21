@@ -3,10 +3,17 @@ package main
 import (
 	//"os/exec"
 	"fmt"
+    "os/exec"
+    "strings"
 )
 
 func Cmd(cmdline string) bool {
-    return true
+    cmdArgs := strings.Fields(cmdline)
+    cmd := exec.Command(cmdArgs[0], cmdArgs[1:]...)
+    if err := cmd.Run(); err == nil {
+        return true
+    }
+    return false
 }
 
 func main(){
