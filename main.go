@@ -1,8 +1,6 @@
 package main
 
 import (
-	//"os/exec"
-	"fmt"
     "os/exec"
     "strings"
 )
@@ -40,19 +38,9 @@ func tcr(test, commit, revert *Exe) *Exe {
 
 
 func main(){
-	fmt.Println("hello world")
+    test := NewExe("make test")
+    commit := NewExe("git commit -a")
+    revert := NewExe("git checkout HEAD main.go")
+
+    tcr(test, commit, revert)
 }
-
-//func runTest(){
-//
-//  go test .
-//}
-//  git commit -a
-//  git checkout HEAD main.go
-//
-//  inotifywait -r -e modify . >&2
-//  do_test && do_commit || do_revert
-// cbTerm := exec.Command("/bin/stty", cbreak, echo)    
-// cbTerm.Stdin = os.Stdin                              
-// err := cbTerm.Run()                                  
-

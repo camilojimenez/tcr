@@ -25,6 +25,5 @@ func TestTCR(t *testing.T){
 
     shouldRevert := tcr(failingTest, commit, revert)
     assert.Equal(t, "revert", shouldRevert.CmdLine)
-
 }
 
