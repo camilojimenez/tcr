@@ -6,20 +6,19 @@ import (
 )
 
 func TestCmd(t *testing.T){
-	succeed := Cmd("ls /")
+	succeed := Cmd("true")
 	assert.Equal(t, true, succeed)
-	fail := Cmd("ls /does_not_exist")
+	fail := Cmd("false")
 	assert.Equal(t, false, fail)
 }
 
-func returner(v bool) (func() bool) {
-    return func() bool {
-        return v
-    }
-}
 
-func TestTCR(t *testing.T){
-
-
-}
+//func TestTCR(t *testing.T){
+//    test := Exe("
+//    commit := returner(true)
+//    revert := returner(true)
+//    assert.Equal(t, commit, tcr(test, commit, revert))
+//
+//
+//}
 
