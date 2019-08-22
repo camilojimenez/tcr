@@ -1,13 +1,17 @@
 package main
 
 import (
+    "fmt"
     "os/exec"
     "strings"
+    "os"
 )
 
 func Cmd(cmdline string) bool {
     cmdArgs := strings.Fields(cmdline)
     cmd := exec.Command(cmdArgs[0], cmdArgs[1:]...)
+    cmd.Stdin = os.Stdin
+    cmd.Stdout = os.Stdout
     if err := cmd.Run(); err == nil {
         return true
     }
@@ -26,6 +30,7 @@ func NewExe(cmdLine string) (*Exe) {
 }
 
 func (e *Exe) Run() bool {
+    fmt.Println(e.CmdLine)
     return Cmd(e.CmdLine)
 }
 
