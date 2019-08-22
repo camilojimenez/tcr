@@ -6,10 +6,10 @@ import (
 )
 
 func TestCmd(t *testing.T){
-	succeed := Cmd("true")
-	assert.Equal(t, true, succeed)
-	fail := Cmd("false")
-	assert.Equal(t, false, fail)
+	assert.Equal(t, true, Cmd("true"))
+	assert.Equal(t, false, Cmd("false"))
+    assert.Equal(t, true, Cmd("ls /bin")) // string
+    assert.Equal(t, false, Cmd("ls /fake")) // string
 }
 
 
