@@ -38,9 +38,16 @@ func tcr(test, commit, revert *Exe) *Exe {
 
 
 func main(){
+    build := NewExe("make build")
     test := NewExe("make test")
     commit := NewExe("git commit -a")
     revert := NewExe("git checkout HEAD main.go")
+    wait := NewExe("inotifywait -r -e modify .")
 
-    tcr(test, commit, revert)
+    for {
+        build.Run()
+        res := tcr(test, commit, revert)
+        res.Run()
+        wait.Run()
+    }
 }
