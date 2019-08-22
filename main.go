@@ -48,10 +48,14 @@ func main(){
     revert := NewExe("git checkout HEAD main.go")
     wait := NewExe("inotifywait -r -e modify .")
 
-    for {
+    again := NewExe("./tcr")
+//    for {
         build.Run()
         res := tcr(test, commit, revert)
         res.Run()
         wait.Run()
-    }
+
+        again.Run()
+
+ //   }
 }
