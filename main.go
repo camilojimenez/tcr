@@ -16,6 +16,10 @@ func Cmd(cmdline string) bool {
     return false
 }
 
+func TCR(f func(string) bool) string {
+    return "commit" 
+}
+
 func main(){
 	fmt.Println("hello world")
 }
