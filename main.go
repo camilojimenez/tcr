@@ -49,6 +49,7 @@ func main(){
     wait := NewExe("inotifywait -r -e modify .")
 
     again := NewExe("./tcr")
+// TODO: change me
 //    for {
         build.Run()
         res := tcr(test, commit, revert)
