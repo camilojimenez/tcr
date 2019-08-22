@@ -16,9 +16,28 @@ func Cmd(cmdline string) bool {
     return false
 }
 
-func TCR(f func(string) bool) string {
-    return "commit" 
+type Exe struct {
+    CmdLine string
+    // TODO: add Cmder
 }
+
+func NewExe(cmdLine string) (*Exe) {
+    return &Exe{
+        CmdLine: cmdLine,
+    }
+}
+
+func (e *Exe) Run() bool {
+    return Cmd(e.CmdLine)
+}
+
+func tcr(test, commit, revert *Exe) *Exe {
+    if test.Run() {
+        return commit
+    }
+    return revert
+}
+
 
 func main(){
 	fmt.Println("hello world")

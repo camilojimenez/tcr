@@ -13,12 +13,18 @@ func TestCmd(t *testing.T){
 }
 
 
-//func TestTCR(t *testing.T){
-//    test := Exe("
-//    commit := returner(true)
-//    revert := returner(true)
-//    assert.Equal(t, commit, tcr(test, commit, revert))
-//
-//
-//}
+func TestTCR(t *testing.T){
+    passingTest := NewExe("true")
+    failingTest := NewExe("false")
+
+    commit := NewExe("commit")
+    revert := NewExe("revert")
+
+    shouldCommit := tcr(passingTest, commit, revert)
+    assert.Equal(t, "commit", shouldCommit.CmdLine)
+
+    shouldRevert := tcr(failingTest, commit, revert)
+    assert.Equal(t, "revert", shouldRevert.CmdLine)
+
+}
 
