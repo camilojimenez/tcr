@@ -3,15 +3,14 @@ package main
 import (
     "fmt"
     "os/exec"
-    "strings"
     "os"
 )
 
 func Cmd(cmdline string) bool {
-    cmdArgs := strings.Fields(cmdline)
-    cmd := exec.Command(cmdArgs[0], cmdArgs[1:]...)
+    cmd := exec.Command("bash", "-c", cmdline)
     cmd.Stdin = os.Stdin
     cmd.Stdout = os.Stdout
+    cmd.Stderr = os.Stderr
     if err := cmd.Run(); err == nil {
         return true
     }
