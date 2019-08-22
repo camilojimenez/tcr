@@ -12,12 +12,14 @@ func TestCmd(t *testing.T){
 	assert.Equal(t, false, fail)
 }
 
-func TestTCR(t *testing.T){
-    allIsGood := func(cmd string) bool {
-        return true
+func returner(v bool) (func() bool) {
+    return func() bool {
+        return v
     }
+}
 
-    tcr := TCR(allIsGood)
-    assert.Equal(t, "commit", tcr)
+func TestTCR(t *testing.T){
+
 
 }
+
