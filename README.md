@@ -4,7 +4,7 @@
 
 TCR stands for:
 
->> test AND commit OR revert
+> test AND commit OR revert
 
 TCR is an experiment first proposed by Kent Beck 
 
