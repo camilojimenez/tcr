@@ -1,4 +1,4 @@
 # hack to make everything work in MY machine
 
-export PATH=~/local/go/bin:$PATH
+export PATH=~/local/share/go/bin:$PATH
 export GOPATH=$PWD
